@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  ollama:
+    build: ./ollama # Build the container from the Dockerfile
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+  # frontend:
+  #   build: ./app
+  #   container_name: app
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - ollama
+
+volumes:
+  ollama_data:
